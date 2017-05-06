@@ -10,28 +10,51 @@ class RepositorioClienteArray(object):
     classdocs
     '''
 
-
     def __init__(self):
         '''
         Constructor
         '''
-        self.cliente = Cliente()
-        self.clienteLista = [self.cliente]
+        self.cliente = []
         
-    
-    def inserir(self, cliente=Cliente()):
-        self.clienteLista.append(cliente)
-    
-    def remover(self, identificacao):
+        
+    def inserirCliente(self, cliente=Cliente()):
         try:
-            self.clienteLista.remove(identificacao)
+            self.cliente.append(cliente)
+        
+        except:
+            print("Erro na insersao!!")
+        
+        print("Cliente inserido com sucesso!!")
+    
+    
+    def removerCliente(self, cliente=Cliente()):
+        try:
+            self.cliente.remove(cliente)
             
         except:
-            print ("Cliente nao existe!!")
+            print ("Erro na remocao!!")
             
         print ("Cliente removido com sucesso!!")   
     
-    def atualizar(self, cliente=Cliente()):
-        self.clienteLista.remove(cliente.getIdentificacao())
-        self.clienteLista.append(cliente)
+    
+    def atualizarCliente(self, cliente=Cliente()):
+        try:
+            self.cliente.remove(cliente.getIdentificacao())
+            self.cliente.append(cliente)
+        except:
+            print ("Erro na atualizacao")
         
+        print ("Cliente atualizado com sucesso!!")
+    
+    
+    def procurarCliente(self, identificacao):
+        for i in range(len(self.cliente)):
+            if self.cliente[i].getIdentificacao() == identificacao:
+                return self.cliente[i]
+        
+        print ("Cliente nao encontrado")
+    
+    
+    def todosClientes(self):
+        return self.cliente
+    

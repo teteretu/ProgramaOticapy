@@ -5,6 +5,7 @@ Created on 28 de abr de 2017
 '''
 from base.Cliente import Cliente
 from base.Endereco import Endereco
+from programa.Fachada import Fachada
 
 if __name__ == '__main__':
     pass
@@ -18,39 +19,51 @@ def inserirCliente():
     endereco = Endereco()
     
     cliente.setNome(input("Qual o seu nome?\n"))
-    cliente.setNascimento(input("Qual sua data de nascimento?"))
-    cliente.setCpf(input("Qual o seu cpf?"))
-    cliente.setTelefone(input("Qual o seu telefone?"))
-    endereco.setCep(input("Qual o seu cep?"))
-    endereco.setEstado(input("Qual o seu estado?"))
-    endereco.setCidade(input("Qual a sua cidade?"))
-    endereco.setRua(input("Qual a sua rua?"))
+    cliente.setNascimento(input("Qual sua data de nascimento?\n"))
+    cliente.setCpf(input("Qual o seu cpf?\n"))
+    cliente.setTelefone(input("Qual o seu telefone?\n"))
+    endereco.setCep(input("Qual o seu cep?\n"))
+    endereco.setEstado(input("Qual o seu estado?\n"))
+    endereco.setCidade(input("Qual a sua cidade?\n"))
+    endereco.setRua(input("Qual a sua rua?\n"))
     cliente.setEndereco(endereco)
+    
+    fachada.inserir(cliente)
+
 
 def atualizarCliente():
     cliente = Cliente()
     endereco = Endereco()
     
     cliente.setNome(input("Qual o seu nome?\n"))
-    cliente.setNascimento(input("Qual sua data de nascimento?"))
-    cliente.setCpf(input("Qual o seu cpf?"))
-    cliente.setTelefone(input("Qual o seu telefone?"))
-    endereco.setCep(input("Qual o seu cep?"))
-    endereco.setEstado(input("Qual o seu estado?"))
-    endereco.setCidade(input("Qual a sua cidade?"))
-    endereco.setRua(input("Qual a sua rua?"))
+    cliente.setNascimento(input("Qual sua data de nascimento?\n"))
+    cliente.setCpf(input("Qual o seu cpf?\n"))
+    cliente.setTelefone(input("Qual o seu telefone?\n"))
+    endereco.setCep(input("Qual o seu cep?\n"))
+    endereco.setEstado(input("Qual o seu estado?\n"))
+    endereco.setCidade(input("Qual a sua cidade\n?"))
+    endereco.setRua(input("Qual a sua rua\n?"))
     cliente.setEndereco(endereco)
+    
+    fachada.atualizar(cliente)
 
 
 def removerCliente():
-    pass
+    identificacao = input("Qual id do cliente que voce deseja remover?\n")
+    removerCliente = fachada.procurar(identificacao)
+    
+    fachada.remover(removerCliente)
+
 
 def procurarCliente():
-    pass
+    identificacao = input("Qual id do cliente que voce deseja procurar?\n")
+    
+    fachada.procurarCliente(identificacao)
+    
 
 def todosClientes():
-    cliente = Cliente()
-    todosClientes = [cliente.getNome, cliente.getNascimento(), cliente.getCpf, cliente.getTelefone(), cliente.getEndereco().getCep(), cliente.getEndereco().getEstado(), cliente.getEndereco().getCidade(), cliente.getEndereco().getRua()]
+    
+    todosClientes = fachada.todosClientes()
     print (todosClientes)
 
 def openCliente():
@@ -80,6 +93,14 @@ def openCliente():
 
 def openFuncionario():
     pass
+
+"""=============
+===ITEM VENDA===
+============="""
+
+def openItemVenda():
+    pass
+
 """=============
 ====PRODUTO=====
 ============="""
@@ -101,7 +122,9 @@ def openVenda():
 run = True
 
 while run:
-    opcao = input(" 1. Cliente\n 2. Funcionario\n 3. Produto\n 4. Venda\n 0. Encerrar Programa\n")
+    global fachada
+    fachada = Fachada()
+    opcao = input(" 1. Funcionario\n 2. Funcionario\n 3. Produto\n 4. Venda\n 0. Encerrar Programa\n")
     if opcao == '0':
         run = False
         print ("Programa fechado\n\n\t BYE!!")
