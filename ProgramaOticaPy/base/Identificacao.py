@@ -23,7 +23,7 @@ class Identificacao(object):
     def getIdentificacao(self):
         return self.identificacao
     
-    def setIidentificacao(self, identificacao):
+    def setIdentificacao(self, identificacao):
         self.identificacao = identificacao
         
     def getNome(self):

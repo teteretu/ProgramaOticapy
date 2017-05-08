@@ -35,15 +35,15 @@ class Fachada(object):
     ============="""
     
     def inserirCliente(self, cliente=Cliente()):
-        self.clientes.inserir(cliente)
+        self.clientes.inserirCliente(cliente)
     
     
     def removerCliente(self, cliente=Cliente()):
-        self.clientes.remover(cliente)
+        self.clientes.removerCliente(cliente)
     
     
     def atualizarCliente(self, cliente=Cliente()):
-        self.clientes.atualizar(cliente)
+        self.clientes.atualizarCliente(cliente)
     
     
     def procurarCliente(self, identificacao):
@@ -61,22 +61,22 @@ class Fachada(object):
     ============="""
 
     def inserirFuncionario(self, funcionario=Funcionario()):
-        self.funcionarios.inserir(funcionario)
+        self.funcionarios.inserirFuncionario(funcionario)
     
     
     def removerFuncionario(self, funcionario=Funcionario()):
-        self.funcionarios.remover(funcionario)
+        self.funcionarios.removerFuncionario(funcionario)
     
     
     def atualizarFuncionario(self, funcionario=Funcionario()):
-        self.funcionarios.atualizar(funcionario)
+        self.funcionarios.atualizarFuncionario(funcionario)
     
     
-    def procurarfuncionario(self, identificacao):
-        return self.funcionarios.procurar(identificacao)
+    def procurarFuncionario(self, identificacao):
+        return self.funcionarios.procurarFuncionario(identificacao)
     
     
-    def todosfuncionarios(self):
+    def todosFuncionarios(self):
         try:
             return self.funcionarios.todosFuncionarios()
         except:
@@ -87,19 +87,19 @@ class Fachada(object):
     ============="""
 
     def inserirItemVenda(self, itemVenda=ItemVenda()):
-        self.itensVenda.inserir(itemVenda)
+        self.itensVenda.inserirItemVenda(itemVenda)
     
     
     def removerItemVenda(self, itemVenda=ItemVenda()):
-        self.itensVenda.remover(itemVenda)
+        self.itensVenda.removerItemVenda(itemVenda)
     
     
     def atualizarItemVenda(self, itemVenda=ItemVenda()):
-        self.itensVenda.atualizar(itemVenda)
+        self.itensVenda.atualizarItemVenda(itemVenda)
     
     
     def procurarItemVenda(self, identificacao):
-        return self.itensVenda.procurar(identificacao)
+        return self.itensVenda.procurarItemVenda(identificacao)
     
     
     def todosItensVenda(self):
@@ -114,19 +114,19 @@ class Fachada(object):
     ============="""
 
     def inserirProduto(self, produto=Produto()):
-        self.produtos.inserir(produto)
+        self.produtos.inserirProduto(produto)
     
     
     def removerProduto(self, produto=Produto()):
-        self.produtos.remover(produto)
+        self.produtos.removerProduto(produto)
     
     
     def atualizarProduto(self, produto=Produto()):
-        self.produtos.atualizar(produto)
+        self.produtos.atualizarProduto(produto)
     
     
     def procurarProduto(self, identificacao):
-        return self.produtos.procurar(identificacao)
+        return self.produtos.procurarProduto(identificacao)
     
     
     def todosProdutos(self):
@@ -141,22 +141,22 @@ class Fachada(object):
     ============="""
 
     def inserirVenda(self, venda=Venda()):
-        self.vendas.inserir(venda)
+        self.vendas.inserirVenda(venda)
     
     
     def removerVenda(self, venda=Venda()):
-        self.vendas.remover(venda)
+        self.vendas.removerVenda(venda)
     
     
     def atualizarVenda(self, venda=Venda()):
-        self.vendas.atualizar(venda)
+        self.vendas.atualizarVenda(venda)
     
     
     def procurarVenda(self, identificacao):
-        return self.vendas.procurar(identificacao)
+        return self.vendas.procurarVenda(identificacao)
     
     
-    def todosVendas(self):
+    def todasVendas(self):
         try:
             return self.vendas.todasvendas()
         except:

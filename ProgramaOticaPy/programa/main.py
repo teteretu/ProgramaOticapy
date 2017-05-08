@@ -6,6 +6,10 @@ Created on 28 de abr de 2017
 from base.Cliente import Cliente
 from base.Endereco import Endereco
 from programa.Fachada import Fachada
+from base.Funcionario import Funcionario
+from base.Produto import Produto
+from base.Venda import Venda
+from base.ItemVenda import ItemVenda
 
 if __name__ == '__main__':
     pass
@@ -28,12 +32,13 @@ def inserirCliente():
     endereco.setRua(input("Qual a sua rua?\n"))
     cliente.setEndereco(endereco)
     
-    fachada.inserir(cliente)
+    fachada.inserirCliente(cliente)
 
 
 def atualizarCliente():
-    cliente = Cliente()
-    endereco = Endereco()
+    idCliente = input("Qual o id do cliente?")
+    cliente = fachada.procurarCliente(idCliente)
+    endereco = cliente.getEndereco()
     
     cliente.setNome(input("Qual o seu nome?\n"))
     cliente.setNascimento(input("Qual sua data de nascimento?\n"))
@@ -45,26 +50,27 @@ def atualizarCliente():
     endereco.setRua(input("Qual a sua rua\n?"))
     cliente.setEndereco(endereco)
     
-    fachada.atualizar(cliente)
+    fachada.atualizarCliente(cliente)
 
 
 def removerCliente():
     identificacao = input("Qual id do cliente que voce deseja remover?\n")
-    removerCliente = fachada.procurar(identificacao)
+    removerCliente = fachada.procurarCliente(identificacao)
     
-    fachada.remover(removerCliente)
+    fachada.removerCliente(removerCliente)
 
 
 def procurarCliente():
     identificacao = input("Qual id do cliente que voce deseja procurar?\n")
     
-    fachada.procurarCliente(identificacao)
-    
+    procurarCliente = fachada.procurarCliente(identificacao)
+    print (procurarCliente)
+
 
 def todosClientes():
-    
     todosClientes = fachada.todosClientes()
     print (todosClientes)
+
 
 def openCliente():
     run = True
@@ -91,29 +97,230 @@ def openCliente():
 ==FUNCIONARIO===
 ============="""
 
+def inserirFuncionario():
+    funcionario = Funcionario()
+    
+    funcionario.setNome(input("Qual o seu nome?"))
+    funcionario.setCpf(input("Qual o seu cpf?"))
+    funcionario.setTelefone(input("Qual o seu telefone?"))
+    
+    fachada.inserirFuncionario(funcionario)
+
+
+def atualizarFuncionario():
+    idFuncionario = input("Qual o id do funcionario?")
+    funcionario = fachada.procurarFuncionario(idFuncionario)
+
+    funcionario.setNome(input("Qual o seu nome?"))
+    funcionario.setCpf(input("Qual o seu cpf?"))
+    funcionario.setTelefone(input("Qual o seu telefone?"))
+    
+    fachada.AtualizarFuncionario(funcionario)
+
+
+def removerFuncionario():
+    identificacao = input("Qual id do funcionario que voce deseja remover?\n")
+    removerFuncionario = fachada.procurarFuncionario(identificacao)
+    
+    fachada.removerFuncionario(removerFuncionario)
+    
+
+def procurarFuncionario():
+    identificacao = input("Qual id do funcionario que voce deseja remover?\n")
+    procurarFuncionario = fachada.procurarFuncionario(identificacao)
+    
+    print (procurarFuncionario)
+
+
+def todosFuncionarios():
+    todosFuncionarios = fachada.todosFuncionarios()
+    print (todosFuncionarios)
+
+
 def openFuncionario():
-    pass
+    run = True
+    while run:
+        opcaoFuncionario = input("    FUNCIONARIO\n 1. Inserir\n 2. Atualizar\n 3. Remover\n 4. Procurar\n 5. Todos\n 0. Voltar Menu\n")
+        
+        if opcaoFuncionario == '1':
+            inserirFuncionario()
+        elif opcaoFuncionario == '2':
+            atualizarFuncionario()
+        elif opcaoFuncionario == '3':
+            removerFuncionario()
+        elif opcaoFuncionario == '4':
+            procurarFuncionario()
+        elif opcaoFuncionario == '5':
+            todosFuncionarios()
+        elif opcaoFuncionario == '0':
+            run = False
+        else:
+            print("Opcao nao confere")
 
 """=============
 ===ITEM VENDA===
 ============="""
 
-def openItemVenda():
-    pass
-
 """=============
 ====PRODUTO=====
 ============="""
 
+def inserirProduto():
+    produto = Produto()
+    
+    produto.setNome(input("Qual o nome?"))
+    produto.setMarca(input("Qual a marca?"))
+    produto.setValorCompra(input("Qual o Valor de Compra?"))
+    produto.setValorVenda(input("Qual o Valor de Venda?"))
+    produto.setQuantidade(input("Qual a quantidade?"))
+    
+    fachada.inserirProduto(produto)
+    
+
+def atualizarProduto():
+    idProduto = input("Qual o id do produto?")
+    produto = fachada.procurarProduto(idProduto)
+    
+    produto.setNome(input("Qual o nome?"))
+    produto.setMarca(input("Qual a marca?"))
+    produto.setValorCompra(input("Qual o Valor de Compra?"))
+    produto.setValorVenda(input("Qual o Valor de Venda?"))
+    produto.setQuantidade(input("Qual a quantidade?"))
+    
+    fachada.atualizarProduto(produto)
+
+
+def removerProduto():
+    identificacao = input("Qual id do produto que voce deseja remover?\n")
+    removerProduto = fachada.procurarProduto(identificacao)
+    
+    fachada.removerProduto(removerProduto)
+
+
+def procurarProduto():
+    identificacao = input("Qual id do produto que voce deseja remover?\n")
+    procurarProduto = fachada.procurarProduto(identificacao)
+    
+    print (procurarProduto)
+
+
+def todosProdutos():
+    todosProdutos = fachada.todosProdutos()
+    print (todosProdutos)
+
+
 def openProduto():
-    pass 
+    run = True
+    while run:
+        opcaoProduto = input("    PRODUTO\n 1. Inserir\n 2. Atualizar\n 3. Remover\n 4. Procurar\n 5. Todos\n 0. Voltar Menu\n")
+        
+        if opcaoProduto == '1':
+            inserirProduto()
+        elif opcaoProduto == '2':
+            atualizarProduto()
+        elif opcaoProduto == '3':
+            removerProduto()
+        elif opcaoProduto == '4':
+            procurarProduto()
+        elif opcaoProduto == '5':
+            todosProdutos()
+        elif opcaoProduto == '0':
+            run = False
+        else:
+            print("Opcao nao confere")
 
 """=============
 =====VENDA======
 ============="""
 
+def inserirVenda():
+    venda = Venda()
+    itensVenda = []
+    itemVenda = ItemVenda() 
+    op = 1
+    
+    venda.setIdCliente(input("Qual o id do cliente?"))
+    venda.setTotal(input("Qual o total da venda?"))
+    venda.setData(input("Qual a data da venda?"))
+    while op == 1:
+        itemVenda.setIdProduto(input("Qual o id do produto a comprar?"))
+        itemVenda.setQuantidade(input("Quantos desse produto voce deseja comprar?"))
+        
+        fachada.inserirItemVenda(itemVenda)
+        
+        itensVenda.append(itemVenda)
+        
+        op = input("Deseja comprar outro produto?  1. Sim\t 0. Nao")
+    
+    venda.setVendas(itensVenda)
+    
+    fachada.inserirVenda(venda)
+
+
+def atualizarVenda():
+    idVenda = input("Qual o id da Venda?")
+    venda = fachada.procurarVenda(idVenda)
+    
+    itensVenda = venda.getVendas()
+    itemVenda = ItemVenda() 
+    op = 1
+    
+    venda.setIdCliente(input("Qual o id do cliente?"))
+    venda.setTotal(input("Qual o total da venda?"))
+    venda.setData(input("Qual a data da venda?"))
+    while op == 1:
+        itemVenda.setIdProduto(input("Qual o id do produto a comprar?"))
+        itemVenda.setQuantidade(input("Quantos desse produto voce deseja comprar?"))
+        
+        fachada.inserirItemVenda(itemVenda)
+        
+        itensVenda.append(itemVenda)
+        
+        op = input("Deseja comprar outro produto?  1. Sim\t 0. Nao")
+    
+    venda.setVendas(itensVenda)
+    
+    fachada.atualizarVenda(venda)
+
+
+def removerVenda():
+    identificacao = input("Qual id da venda que voce deseja remover?\n")
+    removerVenda = fachada.procurarVenda(identificacao)
+    
+    fachada.removerVenda(removerVenda)
+
+
+def procurarVenda():
+    identificacao = input("Qual id da venda que voce deseja remover?\n")
+    procurarVenda = fachada.procurarVenda(identificacao)
+    
+    print(procurarVenda)
+
+
+def todasVendas():
+    todasVendas = fachada.todasVendas()
+    print (todasVendas)
+
+
 def openVenda():
-    pass
+    run = True
+    while run:
+        opcaoVenda = input("    VENDA\n 1. Inserir\n 2. Atualizar\n 3. Remover\n 4. Procurar\n 5. Todos\n 0. Voltar Menu\n")
+        
+        if opcaoVenda == '1':
+            inserirVenda()
+        elif opcaoVenda == '2':
+            atualizarVenda()
+        elif opcaoVenda == '3':
+            removerVenda()
+        elif opcaoVenda == '4':
+            procurarVenda()
+        elif opcaoVenda == '5':
+            todasVendas()
+        elif opcaoVenda == '0':
+            run = False
+        else:
+            print("Opcao nao confere")
 
 """=============
 ===PROGRAMA=====
@@ -122,9 +329,9 @@ def openVenda():
 run = True
 
 while run:
-    global fachada
+    global fachda 
     fachada = Fachada()
-    opcao = input(" 1. Funcionario\n 2. Funcionario\n 3. Produto\n 4. Venda\n 0. Encerrar Programa\n")
+    opcao = input(" 1. Cliente\n 2. Funcionario\n 3. Produto\n 4. Venda\n 0. Encerrar Programa\n")
     if opcao == '0':
         run = False
         print ("Programa fechado\n\n\t BYE!!")

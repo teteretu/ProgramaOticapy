@@ -21,8 +21,8 @@ class Cliente (Identificacao):
     def getIdentificacao(self):
         return Identificacao.getIdentificacao(self)
     
-    def setIidentificacao(self, identificacao):
-        Identificacao.setIidentificacao(self, identificacao)
+    def setIdentificacao(self, identificacao):
+        Identificacao.setIdentificacao(self, identificacao)
         
     def getNome(self):
         return Identificacao.getNome(self)
