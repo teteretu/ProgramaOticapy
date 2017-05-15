@@ -64,7 +64,11 @@ def procurarCliente():
     identificacao = input("Qual id do cliente que voce deseja procurar?\n")
     
     procurarCliente = fachada.procurarCliente(identificacao)
-    print (procurarCliente)
+    try:
+        print("nome: ", procurarCliente.getNome())
+
+    except:
+        print ("none")
 
 
 def todosClientes():
@@ -100,20 +104,20 @@ def openCliente():
 def inserirFuncionario():
     funcionario = Funcionario()
     
-    funcionario.setNome(input("Qual o seu nome?"))
-    funcionario.setCpf(input("Qual o seu cpf?"))
-    funcionario.setTelefone(input("Qual o seu telefone?"))
+    funcionario.setNome(input("Qual o seu nome?\n"))
+    funcionario.setCpf(input("Qual o seu cpf?\n"))
+    funcionario.setTelefone(input("Qual o seu telefone?\n"))
     
     fachada.inserirFuncionario(funcionario)
 
 
 def atualizarFuncionario():
-    idFuncionario = input("Qual o id do funcionario?")
+    idFuncionario = input("Qual o id do funcionario?\n")
     funcionario = fachada.procurarFuncionario(idFuncionario)
 
-    funcionario.setNome(input("Qual o seu nome?"))
-    funcionario.setCpf(input("Qual o seu cpf?"))
-    funcionario.setTelefone(input("Qual o seu telefone?"))
+    funcionario.setNome(input("Qual o seu nome?\n"))
+    funcionario.setCpf(input("Qual o seu cpf?\n"))
+    funcionario.setTelefone(input("Qual o seu telefone?\n"))
     
     fachada.AtualizarFuncionario(funcionario)
 
@@ -155,7 +159,7 @@ def openFuncionario():
         elif opcaoFuncionario == '0':
             run = False
         else:
-            print("Opcao nao confere")
+            print("Opcao nao confere\n")
 
 """=============
 ===ITEM VENDA===
@@ -168,24 +172,24 @@ def openFuncionario():
 def inserirProduto():
     produto = Produto()
     
-    produto.setNome(input("Qual o nome?"))
-    produto.setMarca(input("Qual a marca?"))
-    produto.setValorCompra(input("Qual o Valor de Compra?"))
-    produto.setValorVenda(input("Qual o Valor de Venda?"))
-    produto.setQuantidade(input("Qual a quantidade?"))
+    produto.setNome(input("Qual o nome?\n"))
+    produto.setMarca(input("Qual a marca?\n"))
+    produto.setValorCompra(input("Qual o Valor de Compra?\n"))
+    produto.setValorVenda(input("Qual o Valor de Venda?\n"))
+    produto.setQuantidade(input("Qual a quantidade?\n"))
     
     fachada.inserirProduto(produto)
     
 
 def atualizarProduto():
-    idProduto = input("Qual o id do produto?")
+    idProduto = input("Qual o id do produto?\n")
     produto = fachada.procurarProduto(idProduto)
     
-    produto.setNome(input("Qual o nome?"))
-    produto.setMarca(input("Qual a marca?"))
-    produto.setValorCompra(input("Qual o Valor de Compra?"))
-    produto.setValorVenda(input("Qual o Valor de Venda?"))
-    produto.setQuantidade(input("Qual a quantidade?"))
+    produto.setNome(input("Qual o nome?\n"))
+    produto.setMarca(input("Qual a marca?\n"))
+    produto.setValorCompra(input("Qual o Valor de Compra?\n"))
+    produto.setValorVenda(input("Qual o Valor de Venda?\n"))
+    produto.setQuantidade(input("Qual a quantidade?\n"))
     
     fachada.atualizarProduto(produto)
 
@@ -227,7 +231,7 @@ def openProduto():
         elif opcaoProduto == '0':
             run = False
         else:
-            print("Opcao nao confere")
+            print("Opcao nao confere\n")
 
 """=============
 =====VENDA======
@@ -239,12 +243,12 @@ def inserirVenda():
     itemVenda = ItemVenda() 
     op = 1
     
-    venda.setIdCliente(input("Qual o id do cliente?"))
-    venda.setTotal(input("Qual o total da venda?"))
-    venda.setData(input("Qual a data da venda?"))
+    venda.setIdCliente(input("Qual o id do cliente?\n"))
+    venda.setTotal(input("Qual o total da venda?\n"))
+    venda.setData(input("Qual a data da venda?\n"))
     while op == 1:
-        itemVenda.setIdProduto(input("Qual o id do produto a comprar?"))
-        itemVenda.setQuantidade(input("Quantos desse produto voce deseja comprar?"))
+        itemVenda.setIdProduto(input("Qual o id do produto a comprar?\n"))
+        itemVenda.setQuantidade(input("Quantos desse produto voce deseja comprar?\n"))
         
         fachada.inserirItemVenda(itemVenda)
         
@@ -258,19 +262,19 @@ def inserirVenda():
 
 
 def atualizarVenda():
-    idVenda = input("Qual o id da Venda?")
+    idVenda = input("Qual o id da Venda?\n")
     venda = fachada.procurarVenda(idVenda)
     
     itensVenda = venda.getVendas()
     itemVenda = ItemVenda() 
     op = 1
     
-    venda.setIdCliente(input("Qual o id do cliente?"))
-    venda.setTotal(input("Qual o total da venda?"))
-    venda.setData(input("Qual a data da venda?"))
+    venda.setIdCliente(input("Qual o id do cliente?\n"))
+    venda.setTotal(input("Qual o total da venda?\n"))
+    venda.setData(input("Qual a data da venda?\n"))
     while op == 1:
-        itemVenda.setIdProduto(input("Qual o id do produto a comprar?"))
-        itemVenda.setQuantidade(input("Quantos desse produto voce deseja comprar?"))
+        itemVenda.setIdProduto(input("Qual o id do produto a comprar?\n"))
+        itemVenda.setQuantidade(input("Quantos desse produto voce deseja comprar?\n"))
         
         fachada.inserirItemVenda(itemVenda)
         
@@ -320,7 +324,7 @@ def openVenda():
         elif opcaoVenda == '0':
             run = False
         else:
-            print("Opcao nao confere")
+            print("Opcao nao confere\n")
 
 """=============
 ===PROGRAMA=====
@@ -344,4 +348,4 @@ while run:
     elif opcao == '4':
         openVenda()
     else:
-        print("Opcao nao confere")
+        print("Opcao nao confere\n")
