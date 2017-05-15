@@ -20,6 +20,7 @@ class RepositorioProdutoArray(object):
         
     def inserirProduto(self, produto=Produto()):
         try:
+            produto.setIdentificacao(len(self.produto) + 1)
             self.produto.append(produto)
         
         except:
@@ -49,9 +50,9 @@ class RepositorioProdutoArray(object):
     
     
     def procurarproduto(self, identificacao):
-        for i in range(len(self.produto)):
-            if self.produto[i].getIdentificacao() == identificacao:
-                return self.produto[i]
+        for i in self.produto:
+            if int(i.getIdentificacao()) == int(identificacao):
+                return i
         
         print ("produto nao encontrado")
     

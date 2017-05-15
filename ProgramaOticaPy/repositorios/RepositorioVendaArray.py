@@ -21,6 +21,7 @@ class RepositorioVendaArray(object):
         
     def inserirVenda(self, venda=Venda()):
         try:
+            venda.setIdentificacao(len(self.venda) + 1)
             self.venda.append(venda)
         
         except:
@@ -50,9 +51,9 @@ class RepositorioVendaArray(object):
     
     
     def procurarvenda(self, identificacao):
-        for i in range(len(self.venda)):
-            if self.venda[i].getIdentificacao() == identificacao:
-                return self.venda[i]
+        for i in self.venda:
+            if int(i.getIdentificacao()) == int(identificacao):
+                return i
         
         print ("venda nao encontrado")
     

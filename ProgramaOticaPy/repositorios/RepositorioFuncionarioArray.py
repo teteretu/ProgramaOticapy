@@ -19,6 +19,7 @@ class RepositorioFuncionarioArray(object):
         
     def inserirFuncionario(self, funcionario=Funcionario()):
         try:
+            funcionario.setIdentificacao(len(self.funcionario) + 1)
             self.funcionario.append(funcionario)
         
         except:
@@ -48,9 +49,9 @@ class RepositorioFuncionarioArray(object):
     
     
     def procurarFuncionario(self, identificacao):
-        for i in range(len(self.funcionario)):
-            if self.funcionario[i].getIdentificacao() == identificacao:
-                return self.funcionario[i]
+        for i in self.funcionario:
+            if int(i.getIdentificacao()) == int(identificacao):
+                return i
         
         print ("Funcionario nao encontrado")
     

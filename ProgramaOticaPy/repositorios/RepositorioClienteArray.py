@@ -19,6 +19,7 @@ class RepositorioClienteArray(object):
         
     def inserirCliente(self, cliente=Cliente()):
         try:
+            cliente.setIdentificacao(len(self.cliente) + 1)
             self.cliente.append(cliente)
         
         except:
@@ -48,10 +49,10 @@ class RepositorioClienteArray(object):
     
     
     def procurarCliente(self, identificacao):
-        for i in range(len(self.cliente)):
-            if self.cliente[i].getIdentificacao() == identificacao:
-                return self.cliente[i]
-        
+        for i in self.cliente:
+            if int(i.getIdentificacao()) == int(identificacao):
+                return i
+            
         print ("Cliente nao encontrado")
     
     
